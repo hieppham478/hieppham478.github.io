@@ -1,262 +1,614 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Pham Ngoc Hiep — C# / .NET Software Developer. Building practical software products with C#, .NET and Python." />
-  <meta name="theme-color" content="#0a0d12" />
+
+  <!-- SEO -->
   <title>Pham Ngoc Hiep — C# / .NET Software Developer</title>
-  <style>
-    :root {
-      --bg: #0a0d12;
-      --panel: #10151d;
-      --panel-2: #0d1219;
-      --text: #f4f7fb;
-      --muted: #9aa7b7;
-      --line: rgba(255,255,255,.09);
-      --accent: #64d8ff;
-      --accent-2: #8b7cff;
-      --max: 1080px;
-      --radius: 18px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background:
-        radial-gradient(circle at 85% 10%, rgba(100,216,255,.10), transparent 30%),
-        radial-gradient(circle at 10% 25%, rgba(139,124,255,.08), transparent 30%),
-        var(--bg);
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-    nav {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(10,13,18,.72);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner { height: 68px; display:flex; align-items:center; justify-content:space-between; }
-    .brand { font-weight: 800; letter-spacing: .02em; }
-    .brand span { color: var(--accent); }
-    .nav-links { display:flex; gap: 24px; color: var(--muted); font-size: 14px; }
-    .nav-links a:hover { color: var(--text); }
+  <meta name="description" content="C# / .NET Software Developer in Hanoi, Vietnam. Building practical commercial software products with C#, .NET, Python, APIs, automation and Windows desktop applications." />
+  <meta name="author" content="Pham Ngoc Hiep" />
+  <meta name="theme-color" content="#ffffff" />
 
-    header { padding: 104px 0 78px; }
-    .eyebrow { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
-    h1 { margin: 12px 0 16px; font-size: clamp(42px, 7vw, 78px); line-height: .98; letter-spacing: -.05em; max-width: 850px; }
-    .hero-copy { max-width: 720px; color: var(--muted); font-size: 18px; }
-    .hero-actions { margin-top: 28px; display:flex; flex-wrap:wrap; gap: 12px; }
-    .btn {
-      display:inline-flex; align-items:center; justify-content:center; gap: 8px;
-      padding: 12px 18px; border-radius: 12px; border:1px solid var(--line);
-      font-weight: 700; font-size: 14px; transition: .2s ease;
-    }
-    .btn.primary { background: var(--text); color: #0a0d12; border-color: transparent; }
-    .btn.secondary { background: rgba(255,255,255,.03); }
-    .btn:hover { transform: translateY(-1px); border-color: rgba(100,216,255,.5); }
-    .hero-meta { margin-top: 24px; color: var(--muted); font-size: 14px; }
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pham Ngoc Hiep — C# / .NET Software Developer" />
+  <meta property="og:description" content="C# / .NET Software Developer in Hanoi, Vietnam. Building practical commercial software products with C#, .NET, Python, APIs, automation and Windows desktop applications." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hieppham478.github.io" />
+  <meta property="og:locale" content="en_US" />
 
-    section { padding: 74px 0; border-top: 1px solid var(--line); }
-    .section-head { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom: 28px; }
-    .section-head h2 { margin:0; font-size: 34px; letter-spacing: -.03em; }
-    .section-head p { margin:0; color: var(--muted); max-width: 560px; }
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%232563eb'/><text x='50' y='68' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'>H</text></svg>" />
 
-    .stats { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 46px; }
-    .stat { background: var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; }
-    .stat strong { display:block; font-size:28px; letter-spacing:-.03em; }
-    .stat span { color:var(--muted); font-size:14px; }
-
-    .skills { display:grid; grid-template-columns: repeat(2, 1fr); gap:16px; }
-    .skill { background: var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; }
-    .skill h3 { margin:0 0 8px; font-size:16px; }
-    .skill p { margin:0; color:var(--muted); }
-
-    .projects { display:grid; grid-template-columns: repeat(2, 1fr); gap:18px; }
-    .project {
-      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
-      border:1px solid var(--line); border-radius:var(--radius); padding:24px;
-      min-height: 220px; display:flex; flex-direction:column;
-    }
-    .project-top { display:flex; justify-content:space-between; gap:12px; align-items:start; }
-    .project h3 { margin:0; font-size:22px; letter-spacing:-.02em; }
-    .tag { font-size:12px; color:var(--accent); border:1px solid rgba(100,216,255,.25); padding:5px 8px; border-radius:999px; white-space:nowrap; }
-    .project p { color:var(--muted); margin:14px 0 18px; }
-    .stack { margin-top:auto; color:#c7d1dc; font-size:13px; }
-
-    .about { display:grid; grid-template-columns: 1.2fr .8fr; gap:22px; }
-    .about-card, .contact-card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
-    .about-card p { color:var(--muted); margin-top:0; }
-    .about-card p:last-child { margin-bottom:0; }
-    .contact-list { display:grid; gap:14px; }
-    .contact-item { display:flex; justify-content:space-between; gap:16px; padding-bottom:14px; border-bottom:1px solid var(--line); }
-    .contact-item:last-child { border-bottom:0; padding-bottom:0; }
-    .contact-item span { color:var(--muted); }
-
-    footer { padding: 34px 0 52px; color: var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
-
-    @media (max-width: 800px) {
-      .nav-links { display:none; }
-      .stats, .skills, .projects, .about { grid-template-columns: 1fr; }
-      header { padding-top: 74px; }
-      .hero-copy { font-size:16px; }
-      .section-head { align-items:start; flex-direction:column; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
     <div class="container nav-inner">
-      <a href="#top" class="brand">Hiep<span>.</span></a>
+      <a href="#home" class="nav-brand">Hiep Pham<span class="dot">.</span></a>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#home" data-i18n="nav_home">Trang chủ</a>
+        <a href="#about" data-i18n="nav_about">Giới thiệu</a>
+        <a href="#experience" data-i18n="nav_experience">Kinh nghiệm</a>
+        <a href="#projects" data-i18n="nav_projects">Dự án</a>
+        <a href="#skills" data-i18n="nav_skills">Kỹ năng</a>
+        <a href="#education" data-i18n="nav_education">Học vấn</a>
+        <a href="#contact" data-i18n="nav_contact">Liên hệ</a>
+      </div>
+      <div class="nav-right">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+          <span class="lang-flag">🌐</span>
+          <span class="lang-code" id="lang-code">EN</span>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <main id="top">
-    <header class="container">
-      <div class="eyebrow">C# / .NET Software Developer</div>
-      <h1>I build practical software products that people actually use.</h1>
-      <p class="hero-copy">
-        Hands-on software developer focused on C#/.NET desktop applications, REST/API integrations,
-        multithreading, automation, and Python-based workflows. I also build and operate commercial products independently.
-      </p>
-      <div class="hero-actions">
-        <a class="btn primary" href="#projects">View projects</a>
-        <a class="btn secondary" href="mailto:hiepyoyo478@gmail.com">Contact me</a>
-        <a class="btn secondary" href="https://github.com/hieppham478" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-      <div class="hero-meta">Hanoi, Vietnam · Open to software development opportunities</div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#home" data-i18n="nav_home">Trang chủ</a>
+    <a href="#about" data-i18n="nav_about">Giới thiệu</a>
+    <a href="#experience" data-i18n="nav_experience">Kinh nghiệm</a>
+    <a href="#projects" data-i18n="nav_projects">Dự án</a>
+    <a href="#skills" data-i18n="nav_skills">Kỹ năng</a>
+    <a href="#education" data-i18n="nav_education">Học vấn</a>
+    <a href="#contact" data-i18n="nav_contact">Liên hệ</a>
+  </div>
 
-      <div class="stats">
-        <div class="stat"><strong>2022–Present</strong><span>Independent software development</span></div>
-        <div class="stat"><strong>Hundreds</strong><span>Users across the HPTOOLS platform</span></div>
-        <div class="stat"><strong>Ongoing</strong><span>Commercial product revenue</span></div>
-      </div>
-    </header>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-head">
-          <h2>About</h2>
-          <p>A practical engineering profile built around shipping, debugging, maintaining, and improving real software.</p>
-        </div>
-        <div class="about">
-          <div class="about-card">
-            <p>
-              I am a C#/.NET software developer with hands-on experience designing, building, deploying, and maintaining
-              commercial software products. My main focus is Windows desktop software and automation, with additional experience
-              integrating REST APIs and building Python-based media and data workflows.
-            </p>
-            <p>
-              Since 2022, I have independently operated HPTOOLS, a commercial software platform serving hundreds of users and
-              generating ongoing revenue. That work covers the full product lifecycle: requirements, implementation, debugging,
-              releases, maintenance, and end-user support.
-            </p>
+  <!-- ================================================================
+       HERO
+       ================================================================ -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse"></span>
+            <span data-i18n="hero_badge">Sẵn sàng nhận việc</span>
           </div>
-          <div class="contact-card">
-            <div class="contact-list">
-              <div class="contact-item"><span>Location</span><strong>Hanoi, Vietnam</strong></div>
-              <div class="contact-item"><span>Email</span><a href="mailto:hiepyoyo478@gmail.com">hiepyoyo478@gmail.com</a></div>
-              <div class="contact-item"><span>GitHub</span><a href="https://github.com/hieppham478" target="_blank" rel="noreferrer">hieppham478</a></div>
-              <div class="contact-item"><span>Focus</span><strong>C# / .NET</strong></div>
+
+          <h1>Pham Ngoc Hiep<br/><span class="accent">C# / .NET</span> Software Developer</h1>
+
+          <p class="hero-subtitle" data-i18n="hero_subtitle">Tôi xây dựng và vận hành các sản phẩm phần mềm thực tế bằng C#/.NET và Python, từ phát triển đến triển khai và bảo trì.</p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              <span data-i18n="hero_btn_projects">Xem dự án</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span data-i18n="hero_btn_contact">Liên hệ</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-value">2022 – Present</span>
+              <span class="hero-stat-label" data-i18n="hero_stat1_label">Phát triển phần mềm độc lập</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-value" data-i18n="hero_stat2_value">Hàng trăm</span>
+              <span class="hero-stat-label" data-i18n="hero_stat2_label">Người dùng trên nền tảng HPTOOLS</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-value" data-i18n="hero_stat3_value">Liên tục</span>
+              <span class="hero-stat-label" data-i18n="hero_stat3_label">Doanh thu từ sản phẩm</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="skills">
-      <div class="container">
-        <div class="section-head">
-          <h2>Technical skills</h2>
-          <p>Focused on skills I can explain and use in real projects.</p>
-        </div>
-        <div class="skills">
-          <div class="skill"><h3>C# / .NET</h3><p>C#, .NET, WinForms, Windows desktop applications</p></div>
-          <div class="skill"><h3>API Integration</h3><p>HTTP, REST APIs, third-party API integrations</p></div>
-          <div class="skill"><h3>Concurrency</h3><p>Multithreading, asynchronous task processing, background jobs</p></div>
-          <div class="skill"><h3>Automation</h3><p>Selenium, browser automation, web data extraction</p></div>
-          <div class="skill"><h3>Python</h3><p>Automation, media/data processing, AI API integrations</p></div>
-          <div class="skill"><h3>Product delivery</h3><p>Debugging, deployment, maintenance, user support, iterative updates</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-head">
-          <h2>Selected projects</h2>
-          <p>Examples of products and engineering work from the HPTOOLS platform.</p>
-        </div>
-        <div class="projects">
-          <article class="project">
-            <div class="project-top"><h3>HPTOOLS Platform</h3><span class="tag">Commercial</span></div>
-            <p>Commercial software platform serving hundreds of users and generating ongoing revenue. Built and maintained across multiple product lines.</p>
-            <div class="stack">C# · .NET · Python · APIs · Automation</div>
-          </article>
-          <article class="project">
-            <div class="project-top"><h3>SonicDownloader</h3><span class="tag">C# / .NET</span></div>
-            <p>Windows desktop application using concurrent task execution, network/API integration, background processing, and production-oriented error handling.</p>
-            <div class="stack">C# · .NET · WinForms · Multithreading</div>
-          </article>
-          <article class="project">
-            <div class="project-top"><h3>HypeTransVideo &amp; Helix Speech</h3><span class="tag">Python / AI</span></div>
-            <p>Automated media pipelines for video dubbing and Vietnamese voice-cloning/TTS workflows, combining local GPU execution with AI API integrations.</p>
-            <div class="stack">Python · AI APIs · Local GPU · Media processing</div>
-          </article>
-          <article class="project">
-            <div class="project-top"><h3>TikTok Finder</h3><span class="tag">Automation</span></div>
-            <p>High-speed data collection tool for creator and content metrics across dynamic web pages, with automated extraction and structured output.</p>
-            <div class="stack">Python · Browser automation · Web data</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="section-head">
-          <h2>Let's connect</h2>
-          <p>Open to C#/.NET software development opportunities in Hanoi.</p>
-        </div>
-        <div class="about">
-          <div class="about-card">
-            <p>
-              I’m interested in opportunities where I can bring hands-on product development experience into a professional
-              engineering team and continue growing through real-world software development.
-            </p>
-            <div class="hero-actions">
-              <a class="btn primary" href="mailto:hiepyoyo478@gmail.com">Email me</a>
-              <a class="btn secondary" href="https://github.com/hieppham478" target="_blank" rel="noreferrer">View GitHub</a>
-            </div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-list">
-              <div class="contact-item"><span>Email</span><a href="mailto:hiepyoyo478@gmail.com">hiepyoyo478@gmail.com</a></div>
-              <div class="contact-item"><span>Phone</span><strong>+84 366 225 088</strong></div>
-              <div class="contact-item"><span>Location</span><strong>Hanoi, Vietnam</strong></div>
-            </div>
+        <div class="hero-photo">
+          <div class="hero-photo-wrapper">
+            <img src="assets/profile.jpg" alt="Pham Ngoc Hiep" />
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="container">
-    <div>© <span id="year"></span> Pham Ngoc Hiep</div>
-    <div>C# / .NET Software Developer</div>
+
+  <!-- ================================================================
+       ABOUT
+       ================================================================ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-label reveal" data-i18n="nav_about">Giới thiệu</div>
+      <h2 class="section-title reveal" data-i18n="about_title">Đôi nét về tôi</h2>
+
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <p data-i18n="about_p1">Tôi là lập trình viên C#/.NET với kinh nghiệm thực tế trong thiết kế, xây dựng, triển khai và bảo trì các sản phẩm phần mềm thương mại.</p>
+          <p data-i18n="about_p2">Từ năm 2022, tôi độc lập xây dựng và vận hành HPTOOLS — một nền tảng phần mềm thương mại phục vụ hàng trăm người dùng và tạo doanh thu liên tục. Công việc bao gồm phát triển ứng dụng Windows desktop, tích hợp REST/API, xử lý đa luồng, automation, debugging, deployment và maintenance.</p>
+        </div>
+
+        <div class="about-info-card">
+          <div class="about-info-item">
+            <span class="label" data-i18n="info_location">Địa điểm</span>
+            <span class="value" data-i18n="info_location_val">Hà Nội, Việt Nam</span>
+          </div>
+          <div class="about-info-item">
+            <span class="label">Email</span>
+            <span class="value"><a href="mailto:hiepyoyo478@gmail.com">hiepyoyo478@gmail.com</a></span>
+          </div>
+          <div class="about-info-item">
+            <span class="label" data-i18n="info_phone">Điện thoại</span>
+            <span class="value">+84 366 225 088</span>
+          </div>
+          <div class="about-info-item">
+            <span class="label" data-i18n="info_focus">Chuyên môn</span>
+            <span class="value">C# / .NET</span>
+          </div>
+          <div class="about-info-item">
+            <span class="label" data-i18n="info_status">Trạng thái</span>
+            <span class="value status-green" data-i18n="info_status_val">Sẵn sàng nhận việc</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       EXPERIENCE
+       ================================================================ -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-label reveal" data-i18n="nav_experience">Kinh nghiệm</div>
+      <h2 class="section-title reveal" data-i18n="exp_title">Kinh nghiệm làm việc</h2>
+
+      <div class="experience-card reveal">
+        <div class="exp-header">
+          <div class="exp-title-group">
+            <h3 data-i18n="exp_role">Lập trình viên phần mềm độc lập</h3>
+            <span class="subtitle">HPTOOLS Platform</span>
+          </div>
+          <span class="exp-period">2022 – Present</span>
+        </div>
+
+        <div class="exp-points">
+          <div class="exp-point" data-i18n="exp_p1">Xây dựng và vận hành HPTOOLS — nền tảng phần mềm thương mại phục vụ hàng trăm người dùng và tạo doanh thu liên tục.</div>
+          <div class="exp-point" data-i18n="exp_p2">Thiết kế, phát triển, triển khai và bảo trì các sản phẩm phần mềm sử dụng C#/.NET và Python.</div>
+          <div class="exp-point" data-i18n="exp_p3">Xây dựng ứng dụng desktop Windows với multithreading, asynchronous processing, REST/API integrations, browser automation và production error handling.</div>
+          <div class="exp-point" data-i18n="exp_p4">Quản lý toàn bộ vòng đời sản phẩm từ yêu cầu, phát triển, debugging, phát hành, bảo trì đến hỗ trợ người dùng.</div>
+          <div class="exp-point" data-i18n="exp_p5">Liên tục cải thiện sản phẩm dựa trên phản hồi thực tế từ người dùng.</div>
+        </div>
+
+        <div class="exp-highlights">
+          <div class="exp-highlight">
+            <span class="exp-highlight-value" data-i18n="hero_stat2_value">Hàng trăm</span>
+            <span class="exp-highlight-label" data-i18n="exp_hl_users">Người dùng</span>
+          </div>
+          <div class="exp-highlight">
+            <span class="exp-highlight-value" data-i18n="hero_stat3_value">Liên tục</span>
+            <span class="exp-highlight-label" data-i18n="exp_hl_revenue">Doanh thu</span>
+          </div>
+          <div class="exp-highlight">
+            <span class="exp-highlight-value">C# / .NET</span>
+            <span class="exp-highlight-label" data-i18n="exp_hl_stack">Công nghệ chính</span>
+          </div>
+          <div class="exp-highlight">
+            <span class="exp-highlight-value" data-i18n="exp_hl_lifecycle">Toàn bộ vòng đời</span>
+            <span class="exp-highlight-label" data-i18n="exp_hl_lifecycle_sub">Xây dựng → Triển khai → Bảo trì</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       PROJECTS
+       ================================================================ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-label reveal" data-i18n="nav_projects">Dự án</div>
+      <h2 class="section-title reveal" data-i18n="proj_title">Dự án tiêu biểu</h2>
+      <p class="section-desc reveal" data-i18n="proj_desc">Các sản phẩm được xây dựng và vận hành trên nền tảng HPTOOLS.</p>
+
+      <div class="projects-grid">
+
+        <!-- ── PROJECT 1: HPTOOLS Platform ──────────────────────────────── -->
+        <article class="project-card featured reveal">
+          <div class="project-visual project-visual-hptools">
+            <img src="assets/hptools-logo.png" alt="HPTOOLS Platform" class="hptools-logo" />
+          </div>
+          <div class="project-content">
+            <span class="project-category" data-i18n="proj_hptools_cat">NỀN TẢNG PHẦN MỀM THƯƠNG MẠI</span>
+            <h3 class="project-name">HPTOOLS Platform</h3>
+            <div class="project-details">
+              <div class="project-detail-section">
+                <div class="project-detail-heading" data-i18n="proj_overview">Tổng quan</div>
+                <p class="project-detail-text" data-i18n="proj_hptools_overview">Nền tảng phần mềm thương mại do cá nhân phát triển và vận hành, phục vụ hàng trăm người dùng và vẫn đang tạo doanh thu.</p>
+              </div>
+              <div class="project-detail-section">
+                <div class="project-detail-heading" data-i18n="proj_what_built">Những gì tôi xây dựng</div>
+                <ul class="project-detail-list">
+                  <li data-i18n="proj_hptools_b1">Hệ thống phần mềm thương mại hoàn chỉnh với nhiều sản phẩm</li>
+                  <li data-i18n="proj_hptools_b2">Phát triển ứng dụng desktop, API integrations, automation tools</li>
+                  <li data-i18n="proj_hptools_b3">Vận hành toàn bộ: phát triển, triển khai, bảo trì, hỗ trợ người dùng</li>
+                </ul>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="project-tag">C#</span>
+                <span class="project-tag">.NET</span>
+                <span class="project-tag">Python</span>
+                <span class="project-tag">APIs</span>
+                <span class="project-tag">Desktop</span>
+                <span class="project-tag">Automation</span>
+              </div>
+              <div class="project-buttons">
+                <a href="https://shophptools.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span>Visit HPTOOLS</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PROJECT 2: SonicDownloader ───────────────────────────────── -->
+        <article class="project-card featured reveal">
+          <div class="project-visual">
+            <img src="assets/sonicdownloader.png" alt="SonicDownloader" class="project-screenshot" />
+          </div>
+          <div class="project-content">
+            <span class="project-category" data-i18n="proj_sonic_cat">ỨNG DỤNG DESKTOP C# / .NET</span>
+            <h3 class="project-name">SonicDownloader</h3>
+            <div class="project-details">
+              <div class="project-detail-section">
+                <div class="project-detail-heading" data-i18n="proj_overview">Tổng quan</div>
+                <p class="project-detail-text" data-i18n="proj_sonic_overview">Ứng dụng desktop C#/.NET tập trung vào xử lý media đồng thời và các workflow làm việc hướng mạng.</p>
+              </div>
+              <div class="project-detail-section">
+                <div class="project-detail-heading" data-i18n="proj_what_built">Những gì tôi xây dựng</div>
+                <ul class="project-detail-list">
+                  <li data-i18n="proj_sonic_b1">Ứng dụng desktop Windows với WinForms</li>
+                  <li data-i18n="proj_sonic_b2">Engine xử lý tác vụ đồng thời cho workload lớn</li>
+                  <li data-i18n="proj_sonic_b3">Tích hợp HTTP/API vào logic xử lý</li>
+                  <li data-i18n="proj_sonic_b4">Background processing và pipeline xử lý media</li>
+                  <li data-i18n="proj_sonic_b5">Production error handling</li>
+                </ul>
+              </div>
+              <div class="project-detail-section">
+                <div class="project-detail-heading" data-i18n="proj_tech_hl">Điểm nổi bật kỹ thuật</div>
+                <ul class="project-detail-list">
+                  <li data-i18n="proj_sonic_t1">Multithreading và async/await</li>
+                  <li data-i18n="proj_sonic_t2">HTTP/API integration</li>
+                  <li data-i18n="proj_sonic_t3">Background processing và error handling</li>
+                </ul>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="project-tag">C#</span>
+                <span class="project-tag">.NET</span>
+                <span class="project-tag">WinForms</span>
+                <span class="project-tag">Multithreading</span>
+                <span class="project-tag">Async</span>
+                <span class="project-tag">HTTP</span>
+              </div>
+              <div class="project-buttons">
+                <a href="https://shophptools.com/tool-details/sonicdownloader-tai-video-da-nen-tang-youtube-facebook-tiktok-instagram-bilibili-vimeo" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span data-i18n="proj_view">Xem sản phẩm</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1S6PI7pEkFVOSWADCDg7Y0723g5jdj3b3/view" target="_blank" rel="noopener noreferrer" class="project-link demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span data-i18n="proj_demo">Xem video demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PROJECT 3: HypeTransVideo ────────────────────────────────── -->
+        <article class="project-card featured reveal">
+          <div class="project-visual">
+            <img src="assets/hypetransvideo.png" alt="HypeTransVideo" class="project-screenshot" />
+          </div>
+          <div class="project-content">
+            <span class="project-category" data-i18n="proj_hype_cat">PYTHON / AI / MEDIA PROCESSING</span>
+            <h3 class="project-name">HypeTransVideo</h3>
+            <div class="project-details">
+              <div class="project-detail-section">
+                <div class="project-detail-heading" data-i18n="proj_overview">Tổng quan</div>
+                <p class="project-detail-text" data-i18n="proj_hype_overview">Pipeline media tự động cho dịch và lồng tiếng video, kết hợp xử lý GPU cục bộ với AI API.</p>
+              </div>
+              <div class="project-detail-section">
+                <div class="project-detail-heading" data-i18n="proj_what_built">Những gì tôi xây dựng</div>
+                <ul class="project-detail-list">
+                  <li data-i18n="proj_hype_b1">Pipeline lồng tiếng video end-to-end</li>
+                  <li data-i18n="proj_hype_b2">Tích hợp AI API</li>
+                  <li data-i18n="proj_hype_b3">Xử lý GPU cục bộ cho inference</li>
+                  <li data-i18n="proj_hype_b4">Đồng bộ audio/video tự động</li>
+                  <li data-i18n="proj_hype_b5">Workflow xử lý media</li>
+                </ul>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">AI APIs</span>
+                <span class="project-tag">GPU</span>
+                <span class="project-tag">Media</span>
+                <span class="project-tag">Automation</span>
+              </div>
+              <div class="project-buttons">
+                <a href="https://shophptools.com/tool-details/hypetransvideo-tool-dich-va-long-tieng-video-chuyen-nghiep" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span data-i18n="proj_view">Xem sản phẩm</span>
+                </a>
+                <a href="https://drive.google.com/file/u/0/d/1gIV57vQJsC1bkkv_owOi60YhUGD1LM7u/view" target="_blank" rel="noopener noreferrer" class="project-link demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span data-i18n="proj_demo">Xem video demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PROJECT 4: Helix Speech ──────────────────────────────────── -->
+        <article class="project-card reveal">
+          <div class="project-visual">
+            <img src="assets/helixspeech.png" alt="Helix Speech" class="project-screenshot" />
+          </div>
+          <div class="project-content">
+            <span class="project-category" data-i18n="proj_helix_cat">PYTHON / TTS / AI</span>
+            <h3 class="project-name">Helix Speech</h3>
+            <p class="project-desc" data-i18n="proj_helix_desc">Ứng dụng xử lý và chuyển đổi giọng nói tiếng Việt, kết hợp TTS, voice workflow và AI APIs.</p>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">TTS</span>
+                <span class="project-tag">AI APIs</span>
+                <span class="project-tag">Audio</span>
+              </div>
+              <div class="project-buttons">
+                <a href="https://shophptools.com/tool-details/helix-speech-tool-text-to-speech-clone-voice-vietnamese-vip" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span data-i18n="proj_view">Xem sản phẩm</span>
+                </a>
+                <a href="https://drive.google.com/file/d/14VDD0RCzcA3I35IAlAZm97M7PoGoUsTj/view" target="_blank" rel="noopener noreferrer" class="project-link demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span data-i18n="proj_demo">Xem video demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PROJECT 5: TikTok Finder ─────────────────────────────────── -->
+        <article class="project-card reveal">
+          <div class="project-visual">
+            <img src="assets/tiktokfinder.png" alt="TikTok Finder" class="project-screenshot" />
+          </div>
+          <div class="project-content">
+            <span class="project-category" data-i18n="proj_tiktok_cat">PYTHON / AUTOMATION / WEB DATA</span>
+            <h3 class="project-name">TikTok Finder</h3>
+            <p class="project-desc" data-i18n="proj_tiktok_desc">Công cụ automation và thu thập dữ liệu creator/content từ các trang web động, với automated extraction và structured output.</p>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Automation</span>
+                <span class="project-tag">Browser</span>
+                <span class="project-tag">Data</span>
+              </div>
+              <div class="project-buttons">
+                <a href="https://shophptools.com/tool-details/tiktok-finder-tim-khach-hang-kol-koc-user-video-anh" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span data-i18n="proj_view">Xem sản phẩm</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1kOOhib9oNzoBnrZLu1-L_0DlpHlYVXl3/view" target="_blank" rel="noopener noreferrer" class="project-link demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span data-i18n="proj_demo">Xem video demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── PROJECT 6: YouTube Finder ────────────────────────────────── -->
+        <article class="project-card reveal">
+          <div class="project-visual">
+            <img src="assets/youtubefinder.png" alt="YouTube Finder" class="project-screenshot" />
+          </div>
+          <div class="project-content">
+            <span class="project-category" data-i18n="proj_yt_cat">PYTHON / AUTOMATION / DATA</span>
+            <h3 class="project-name">YouTube Finder</h3>
+            <p class="project-desc" data-i18n="proj_yt_desc">Công cụ tìm kiếm kênh và video YouTube, hỗ trợ tìm kiếm tự động, trích xuất dữ liệu và đầu ra có cấu trúc phục vụ phân tích nội dung.</p>
+            <div class="project-footer">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Automation</span>
+                <span class="project-tag">Data</span>
+                <span class="project-tag">Browser</span>
+              </div>
+              <div class="project-buttons">
+                <a href="https://shophptools.com/tool-details/youtube-finder-tim-kenh-lay-video-tai-video-youtube" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span data-i18n="proj_view">Xem sản phẩm</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1RAwWDENfC4JFjJjUCUfhs391o0NTTOfV/view" target="_blank" rel="noopener noreferrer" class="project-link demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span data-i18n="proj_demo">Xem video demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       SKILLS
+       ================================================================ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-label reveal" data-i18n="nav_skills">Kỹ năng</div>
+      <h2 class="section-title reveal" data-i18n="skills_title">Kỹ năng chuyên môn</h2>
+
+      <div class="skills-grid reveal">
+        <div class="skill-card">
+          <div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="skill-name">C# / .NET</div>
+          <div class="skill-items"><span>C#</span><span>.NET Framework</span><span>WinForms</span><span data-i18n="skill_desktop">Windows Desktop Applications</span></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <div class="skill-name" data-i18n="skill_concurrency">Concurrency</div>
+          <div class="skill-items"><span>Multithreading</span><span data-i18n="skill_async">Asynchronous Processing</span><span data-i18n="skill_bg">Background Tasks</span></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div class="skill-name">API &amp; Web</div>
+          <div class="skill-items"><span>HTTP</span><span>REST APIs</span><span data-i18n="skill_3rd">Third-party API Integrations</span></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="skill-name">Automation</div>
+          <div class="skill-items"><span>Selenium</span><span data-i18n="skill_browser_auto">Browser Automation</span><span data-i18n="skill_web_extract">Web Data Extraction</span></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></div>
+          <div class="skill-name">Python</div>
+          <div class="skill-items"><span>Automation</span><span data-i18n="skill_media_data">Media / Data Processing</span><span data-i18n="skill_ai_api">AI API Integrations</span></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+          <div class="skill-name" data-i18n="skill_devtools">Development Tools</div>
+          <div class="skill-items"><span>Git</span></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          <div class="skill-name" data-i18n="skill_delivery">Product Delivery</div>
+          <div class="skill-items"><span>Debugging</span><span>Deployment</span><span data-i18n="skill_maintain_support">Maintenance &amp; User Support</span><span data-i18n="skill_updates">Iterative Product Updates</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       APPROACH
+       ================================================================ -->
+  <section class="section" id="approach">
+    <div class="container">
+      <div class="section-label reveal" data-i18n="approach_label">Phương pháp</div>
+      <h2 class="section-title reveal" data-i18n="approach_title">Cách tôi làm việc</h2>
+      <p class="section-desc reveal" data-i18n="approach_desc">Từ yêu cầu thực tế đến sản phẩm được triển khai và duy trì.</p>
+
+      <div class="approach-grid reveal">
+        <div class="approach-item">
+          <span class="approach-icon">⚙️</span>
+          <div class="approach-name" data-i18n="approach_build">Xây dựng</div>
+          <p class="approach-desc" data-i18n="approach_build_d">Chuyển đổi yêu cầu thực tế thành ứng dụng desktop và công cụ tự động hóa.</p>
+        </div>
+        <div class="approach-item">
+          <span class="approach-icon">🔍</span>
+          <div class="approach-name">Debug</div>
+          <p class="approach-desc" data-i18n="approach_debug_d">Tìm và sửa lỗi trong môi trường production dưới các ràng buộc thực tế.</p>
+        </div>
+        <div class="approach-item">
+          <span class="approach-icon">🔗</span>
+          <div class="approach-name" data-i18n="approach_integrate">Tích hợp</div>
+          <p class="approach-desc" data-i18n="approach_integrate_d">Kết nối phần mềm với REST API, dịch vụ bên thứ ba và nguồn dữ liệu bên ngoài.</p>
+        </div>
+        <div class="approach-item">
+          <span class="approach-icon">🚀</span>
+          <div class="approach-name" data-i18n="approach_deploy">Triển khai</div>
+          <p class="approach-desc" data-i18n="approach_deploy_d">Đóng gói và phát hành phần mềm cho người dùng thực với xử lý lỗi và độ ổn định.</p>
+        </div>
+        <div class="approach-item">
+          <span class="approach-icon">🔄</span>
+          <div class="approach-name" data-i18n="approach_maintain">Bảo trì</div>
+          <p class="approach-desc" data-i18n="approach_maintain_d">Duy trì sản phẩm hoạt động, phản hồi người dùng và cập nhật cải tiến liên tục.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       EDUCATION
+       ================================================================ -->
+  <section class="section" id="education">
+    <div class="container">
+      <div class="section-label reveal" data-i18n="nav_education">Học vấn</div>
+      <h2 class="section-title reveal" data-i18n="edu_title">Học vấn</h2>
+      <div class="education-card reveal">
+        <div class="education-icon">🎓</div>
+        <div class="education-info">
+          <h3 data-i18n="edu_school">Đại học Phenikaa</h3>
+          <p data-i18n="edu_status">Đã từng theo học</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       CONTACT
+       ================================================================ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-label reveal" data-i18n="nav_contact">Liên hệ</div>
+      <div class="contact-grid reveal">
+        <div class="contact-text">
+          <h2 class="contact-heading" data-i18n-html="contact_heading">Sẵn sàng nhận vị trí<br/><span class="accent">C#/.NET</span> Software Developer.</h2>
+          <p class="contact-desc" data-i18n="contact_desc">Tôi đang tìm kiếm cơ hội để mang kinh nghiệm phát triển sản phẩm thực tế vào một đội ngũ kỹ thuật chuyên nghiệp.</p>
+          <div class="contact-actions">
+            <a href="mailto:hiepyoyo478@gmail.com" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span data-i18n="contact_email_btn">Gửi Email</span>
+            </a>
+            <a href="tel:+84366225088" class="btn btn-secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c1.21.34 2 .57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span data-i18n="contact_call_btn">Gọi điện</span>
+            </a>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-item">
+            <span class="label">Email</span>
+            <span class="value copy-btn" data-copy="hiepyoyo478@gmail.com" role="button" tabindex="0" aria-label="Copy email">
+              <a href="mailto:hiepyoyo478@gmail.com">hiepyoyo478@gmail.com</a>
+              <span class="tooltip">Đã sao chép!</span>
+            </span>
+          </div>
+          <div class="contact-info-item">
+            <span class="label" data-i18n="info_phone">Điện thoại</span>
+            <span class="value">+84 366 225 088</span>
+          </div>
+          <div class="contact-info-item">
+            <span class="label" data-i18n="info_location">Địa điểm</span>
+            <span class="value" data-i18n="info_location_val">Hà Nội, Việt Nam</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-copy">&copy; <span id="year"></span> Pham Ngoc Hiep</span>
+    </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
