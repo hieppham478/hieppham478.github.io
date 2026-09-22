@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pham Ngoc Hiep — C# / .NET Software Developer. Building practical software products with C#, .NET and Python." />
+  <meta name="theme-color" content="#0a0d12" />
+  <title>Pham Ngoc Hiep — C# / .NET Software Developer</title>
+  <style>
+    :root {
+      --bg: #0a0d12;
+      --panel: #10151d;
+      --panel-2: #0d1219;
+      --text: #f4f7fb;
+      --muted: #9aa7b7;
+      --line: rgba(255,255,255,.09);
+      --accent: #64d8ff;
+      --accent-2: #8b7cff;
+      --max: 1080px;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 85% 10%, rgba(100,216,255,.10), transparent 30%),
+        radial-gradient(circle at 10% 25%, rgba(139,124,255,.08), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(10,13,18,.72);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { height: 68px; display:flex; align-items:center; justify-content:space-between; }
+    .brand { font-weight: 800; letter-spacing: .02em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display:flex; gap: 24px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--text); }
+
+    header { padding: 104px 0 78px; }
+    .eyebrow { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 12px 0 16px; font-size: clamp(42px, 7vw, 78px); line-height: .98; letter-spacing: -.05em; max-width: 850px; }
+    .hero-copy { max-width: 720px; color: var(--muted); font-size: 18px; }
+    .hero-actions { margin-top: 28px; display:flex; flex-wrap:wrap; gap: 12px; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap: 8px;
+      padding: 12px 18px; border-radius: 12px; border:1px solid var(--line);
+      font-weight: 700; font-size: 14px; transition: .2s ease;
+    }
+    .btn.primary { background: var(--text); color: #0a0d12; border-color: transparent; }
+    .btn.secondary { background: rgba(255,255,255,.03); }
+    .btn:hover { transform: translateY(-1px); border-color: rgba(100,216,255,.5); }
+    .hero-meta { margin-top: 24px; color: var(--muted); font-size: 14px; }
+
+    section { padding: 74px 0; border-top: 1px solid var(--line); }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom: 28px; }
+    .section-head h2 { margin:0; font-size: 34px; letter-spacing: -.03em; }
+    .section-head p { margin:0; color: var(--muted); max-width: 560px; }
+
+    .stats { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 46px; }
+    .stat { background: var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; }
+    .stat strong { display:block; font-size:28px; letter-spacing:-.03em; }
+    .stat span { color:var(--muted); font-size:14px; }
+
+    .skills { display:grid; grid-template-columns: repeat(2, 1fr); gap:16px; }
+    .skill { background: var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; }
+    .skill h3 { margin:0 0 8px; font-size:16px; }
+    .skill p { margin:0; color:var(--muted); }
+
+    .projects { display:grid; grid-template-columns: repeat(2, 1fr); gap:18px; }
+    .project {
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+      border:1px solid var(--line); border-radius:var(--radius); padding:24px;
+      min-height: 220px; display:flex; flex-direction:column;
+    }
+    .project-top { display:flex; justify-content:space-between; gap:12px; align-items:start; }
+    .project h3 { margin:0; font-size:22px; letter-spacing:-.02em; }
+    .tag { font-size:12px; color:var(--accent); border:1px solid rgba(100,216,255,.25); padding:5px 8px; border-radius:999px; white-space:nowrap; }
+    .project p { color:var(--muted); margin:14px 0 18px; }
+    .stack { margin-top:auto; color:#c7d1dc; font-size:13px; }
+
+    .about { display:grid; grid-template-columns: 1.2fr .8fr; gap:22px; }
+    .about-card, .contact-card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
+    .about-card p { color:var(--muted); margin-top:0; }
+    .about-card p:last-child { margin-bottom:0; }
+    .contact-list { display:grid; gap:14px; }
+    .contact-item { display:flex; justify-content:space-between; gap:16px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+    .contact-item:last-child { border-bottom:0; padding-bottom:0; }
+    .contact-item span { color:var(--muted); }
+
+    footer { padding: 34px 0 52px; color: var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+
+    @media (max-width: 800px) {
+      .nav-links { display:none; }
+      .stats, .skills, .projects, .about { grid-template-columns: 1fr; }
+      header { padding-top: 74px; }
+      .hero-copy { font-size:16px; }
+      .section-head { align-items:start; flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#top" class="brand">Hiep<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="container">
+      <div class="eyebrow">C# / .NET Software Developer</div>
+      <h1>I build practical software products that people actually use.</h1>
+      <p class="hero-copy">
+        Hands-on software developer focused on C#/.NET desktop applications, REST/API integrations,
+        multithreading, automation, and Python-based workflows. I also build and operate commercial products independently.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn secondary" href="mailto:hiepyoyo478@gmail.com">Contact me</a>
+        <a class="btn secondary" href="https://github.com/hieppham478" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+      <div class="hero-meta">Hanoi, Vietnam · Open to software development opportunities</div>
+
+      <div class="stats">
+        <div class="stat"><strong>2022–Present</strong><span>Independent software development</span></div>
+        <div class="stat"><strong>Hundreds</strong><span>Users across the HPTOOLS platform</span></div>
+        <div class="stat"><strong>Ongoing</strong><span>Commercial product revenue</span></div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About</h2>
+          <p>A practical engineering profile built around shipping, debugging, maintaining, and improving real software.</p>
+        </div>
+        <div class="about">
+          <div class="about-card">
+            <p>
+              I am a C#/.NET software developer with hands-on experience designing, building, deploying, and maintaining
+              commercial software products. My main focus is Windows desktop software and automation, with additional experience
+              integrating REST APIs and building Python-based media and data workflows.
+            </p>
+            <p>
+              Since 2022, I have independently operated HPTOOLS, a commercial software platform serving hundreds of users and
+              generating ongoing revenue. That work covers the full product lifecycle: requirements, implementation, debugging,
+              releases, maintenance, and end-user support.
+            </p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-list">
+              <div class="contact-item"><span>Location</span><strong>Hanoi, Vietnam</strong></div>
+              <div class="contact-item"><span>Email</span><a href="mailto:hiepyoyo478@gmail.com">hiepyoyo478@gmail.com</a></div>
+              <div class="contact-item"><span>GitHub</span><a href="https://github.com/hieppham478" target="_blank" rel="noreferrer">hieppham478</a></div>
+              <div class="contact-item"><span>Focus</span><strong>C# / .NET</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <h2>Technical skills</h2>
+          <p>Focused on skills I can explain and use in real projects.</p>
+        </div>
+        <div class="skills">
+          <div class="skill"><h3>C# / .NET</h3><p>C#, .NET, WinForms, Windows desktop applications</p></div>
+          <div class="skill"><h3>API Integration</h3><p>HTTP, REST APIs, third-party API integrations</p></div>
+          <div class="skill"><h3>Concurrency</h3><p>Multithreading, asynchronous task processing, background jobs</p></div>
+          <div class="skill"><h3>Automation</h3><p>Selenium, browser automation, web data extraction</p></div>
+          <div class="skill"><h3>Python</h3><p>Automation, media/data processing, AI API integrations</p></div>
+          <div class="skill"><h3>Product delivery</h3><p>Debugging, deployment, maintenance, user support, iterative updates</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Selected projects</h2>
+          <p>Examples of products and engineering work from the HPTOOLS platform.</p>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <div class="project-top"><h3>HPTOOLS Platform</h3><span class="tag">Commercial</span></div>
+            <p>Commercial software platform serving hundreds of users and generating ongoing revenue. Built and maintained across multiple product lines.</p>
+            <div class="stack">C# · .NET · Python · APIs · Automation</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><h3>SonicDownloader</h3><span class="tag">C# / .NET</span></div>
+            <p>Windows desktop application using concurrent task execution, network/API integration, background processing, and production-oriented error handling.</p>
+            <div class="stack">C# · .NET · WinForms · Multithreading</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><h3>HypeTransVideo &amp; Helix Speech</h3><span class="tag">Python / AI</span></div>
+            <p>Automated media pipelines for video dubbing and Vietnamese voice-cloning/TTS workflows, combining local GPU execution with AI API integrations.</p>
+            <div class="stack">Python · AI APIs · Local GPU · Media processing</div>
+          </article>
+          <article class="project">
+            <div class="project-top"><h3>TikTok Finder</h3><span class="tag">Automation</span></div>
+            <p>High-speed data collection tool for creator and content metrics across dynamic web pages, with automated extraction and structured output.</p>
+            <div class="stack">Python · Browser automation · Web data</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Let's connect</h2>
+          <p>Open to C#/.NET software development opportunities in Hanoi.</p>
+        </div>
+        <div class="about">
+          <div class="about-card">
+            <p>
+              I’m interested in opportunities where I can bring hands-on product development experience into a professional
+              engineering team and continue growing through real-world software development.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="mailto:hiepyoyo478@gmail.com">Email me</a>
+              <a class="btn secondary" href="https://github.com/hieppham478" target="_blank" rel="noreferrer">View GitHub</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-list">
+              <div class="contact-item"><span>Email</span><a href="mailto:hiepyoyo478@gmail.com">hiepyoyo478@gmail.com</a></div>
+              <div class="contact-item"><span>Phone</span><strong>+84 366 225 088</strong></div>
+              <div class="contact-item"><span>Location</span><strong>Hanoi, Vietnam</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div>© <span id="year"></span> Pham Ngoc Hiep</div>
+    <div>C# / .NET Software Developer</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
